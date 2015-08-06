@@ -1,3 +1,18 @@
+#Nommage des snippets :
+
+- Tout en minuscule
+- Le double-tiret permet de séparer les différentes parties du nom
+
+{technologie}--{fonctionnalite}.{language}
+
+#Exemple :
+
+```
+drupal--hook_menu.php
+```
+
+#Using unix commands to search for snippets
+
 search a snippet with "apples" OR "oranges" characters
 E is automatic escaping for "|", just remove to search for a "|"
 
