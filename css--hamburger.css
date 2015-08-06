@@ -1,0 +1,7 @@
+@desc css hamburger
+@tags hamburger
+
+a.hamburger:before {
+    /* output the hamburger character ☰ */
+    content: '\2261\00a0';
+}
