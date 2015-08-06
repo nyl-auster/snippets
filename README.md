@@ -3,8 +3,8 @@ E is automatic escaping for "|", just remove to search for a "|"
 
 grep -Erin 'apples|oranges' 
 
-AND operator :
-grep -Erin 'apples.*oranges' 
+AND operator (ionic AND controller, in any order in the same line)
+grep -Eril "ionic.*controller|controller.*ionic"
 
 Create some alias in .bash
 
