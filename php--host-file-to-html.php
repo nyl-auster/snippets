@@ -1,5 +1,5 @@
 @desc read host file and create a html clickable page from it
-@tags etc/hosts , hosts 
+@tags etc/hosts , hosts
 
 <?php
 /**
