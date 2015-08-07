@@ -1,5 +1,5 @@
 @desc drupal 7 get user by mail
-@tag drupal 7, user
+@tags drupal 7
 
 <?php
 

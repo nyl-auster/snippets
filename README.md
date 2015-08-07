@@ -3,7 +3,7 @@
 - Tout en minuscule
 - Le double-tiret permet de séparer les différentes parties du nom
 
-{technologie}--{fonctionnalite}.{language}
+{technologie}--{description-snippet}.{language}
 
 #Exemple :
 
@@ -11,10 +11,21 @@
 drupal--hook_menu.php
 ```
 
-#Using unix commands to search for snippets
+#Retrouver rapidement un snippet
 
-search a snippet with "apples" OR "oranges" characters
-E is automatic escaping for "|", just remove to search for a "|"
+Mettre la commande suivante dans le .bash du profil utilisateur
+ss pour "snippet search" :
+A la place de "/Applications/MAMP/htdocs/snippets", mettre le dossier contenant le dépot git des snippets.
+
+```sh
+function ss { cd /Applications/MAMP/htdocs/snippets; ls -1 | grep "$1.*$2.*$3\|$2.*$1.*$3\|$3.*$2.*$1\|$1.*$3.*$2\|$2.*$3.*$1\|$3.*$1.*$2"; }
+```
+
+La commande "ss" liste tous les plugins
+Tous les mots suivants seront des critères de recherche sur le nom du fichier avec l'opérateur ET.
+Exemple; la commande "ss redirect drupal user" retournera la fichier nommé "drupal-7--user-redirect-from-login.php"
+
+Il est possible de chercher à l'intérieur des snippets avec grep :
 
 grep -Erin 'apples|oranges' 
 
