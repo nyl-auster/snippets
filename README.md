@@ -5,10 +5,10 @@
 
 {technologie}--{description-snippet}.{language}
 
-#Exemple :
+#Exemple pour un hook menu de Drupal7
 
 ```
-drupal--hook_menu.php
+drupal7--hook_menu.php
 ```
 
 #Retrouver rapidement un snippet
