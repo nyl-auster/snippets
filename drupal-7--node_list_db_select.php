@@ -21,6 +21,7 @@ function get_node_list() {
 // seulement les articles publiés
   $query->condition('status', 1);
   $query->condition('type', 'article');
+  $query->condition("n.language", $GLOBALS['language']->language);
 //$query->condition('tid', $this->tids, 'IN');
 // order by date DESC
   $query->orderBy('created', 'DESC');
