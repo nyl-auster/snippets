@@ -1,0 +1,5 @@
+name = Mazedia cookie consent
+description = "Accepter les cookies pour naviguer sur le site."
+package = PDT
+core = 7.x
+version = 7.x-1.1
