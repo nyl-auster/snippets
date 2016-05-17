@@ -1,10 +1,6 @@
-@desc Formats a line (passed as a fields  array) as CSV and returns the CSV as a string.
-@tags csv, line, array
-
-
 <?php
 /**
- * Formats a line (passed as a fields  array) as CSV and returns the CSV as a string.
+ * Formats a line (passed as an array) as CSV and returns the CSV as a string.
  * Adapted from http://us3.php.net/manual/en/function.fputcsv.php#87120
  */
 function array_to_csv_line( array &$fields, $delimiter = ';', $enclosure = '"', $encloseAll = false, $nullToMysqlNull = false ) {
@@ -29,3 +25,17 @@ function array_to_csv_line( array &$fields, $delimiter = ';', $enclosure = '"', 
 
   return implode( $delimiter, $output );
 }
+
+/**
+ * Transforme un csv représenté par un array en une chaine de caractère utilisable
+ * Par Excel ou autre.
+ */
+function export_as_csv($lines) {
+  $csv = '';
+  foreach ($lines as $line) {
+    $line = (array)$line;
+    $csv .= array_to_csv_line($line);
+  }
+  return $csv;
+}
+
