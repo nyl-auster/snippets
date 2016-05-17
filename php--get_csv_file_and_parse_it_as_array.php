@@ -1,8 +1,7 @@
-@desc Create a php array from a csv string.
+@description Create a php array from a csv string.
 @tags csv
 
 <?php
-
 /**
  * Create a php array from a csv string.
  *

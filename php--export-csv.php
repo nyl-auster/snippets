@@ -14,7 +14,7 @@ function array_to_csv_line( array &$fields, $delimiter = ';', $enclosure = '"', 
       continue;
     }
 
-// Enclose fields containing $delimiter, $enclosure or whitespace
+    // Enclose fields containing $delimiter, $enclosure or whitespace
     if ( $encloseAll || preg_match( "/(?:${delimiter_esc}|${enclosure_esc}|\s)/", $field ) ) {
       $output[] = $enclosure . str_replace($enclosure, $enclosure . $enclosure, $field) . $enclosure;
     }
@@ -27,10 +27,18 @@ function array_to_csv_line( array &$fields, $delimiter = ';', $enclosure = '"', 
 }
 
 /**
- * Transforme un csv représenté par un array en une chaine de caractère utilisable
- * Par Excel ou autre.
+ * converti un csv représenté par un array en une string importable par Excel ou autre.
+ * exemple de tableau lines attendu en entrée :
+ * @code
+ * array(
+ *   array('name' => 'yann', 'mail' => 'mail@mail.com'),
+ *   array('name' => 'spinoza', 'mail' => 'spinoza@caramail.com'),
+ * );
+ * @encode
+ * @param $lines
+ * @return string
  */
-function export_as_csv($lines) {
+function csv_array_to_string($lines) {
   $csv = '';
   foreach ($lines as $line) {
     $line = (array)$line;
@@ -38,4 +46,22 @@ function export_as_csv($lines) {
   }
   return $csv;
 }
+
+function download_csv() {
+  $datas = abonnes_get_all();
+  if (!$datas) {
+    return;
+  }
+  $csv = csv_array_to_string($datas);
+  header("Pragma: public");
+  header("Expires: 0");
+  header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+  header("Cache-Control: private",false); // required for certain browsers
+  header("Content-Type: application/csv;charset=utf-8");
+  header('Content-Disposition: attachment; filename="export.csv"');
+  header("Content-Transfer-Encoding: binary");
+  print $csv;
+  drupal_exit();
+}
+
 
