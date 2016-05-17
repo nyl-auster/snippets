@@ -1,6 +1,3 @@
-@desc Drupal 7 bootstrap for php unit
-@tags drupal 7, drupal, phpunit, php unit
-
 <?php
 
 /**

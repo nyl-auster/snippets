@@ -1,6 +1,8 @@
-@desc check if a variable is an array in javascript
-@tags js, array, isArray, is array
-
+/**
+ * Vérifier si une variable javascript est un array.
+ * @param myArray
+ * @returns {boolean}
+ */
 function isArray(myArray) {
   return myArray.constructor.toString().indexOf("Array") > -1;
 }

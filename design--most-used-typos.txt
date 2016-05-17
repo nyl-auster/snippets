@@ -1,5 +1,6 @@
-@desc most used typos in the world in 2015
-@tags design, typo
+/**
+ * Les typos les plus utilisées en 2015
+ */
 
 10) Caslon
 9) LL Circular

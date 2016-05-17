@@ -1,4 +1,8 @@
 <?php
+/**
+ * Formulaire de config multilingue, drupal 7
+ * @return mixed
+ */
 
 function pdt_cookie_consent_form() {
 

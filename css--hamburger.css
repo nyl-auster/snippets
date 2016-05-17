@@ -1,6 +1,6 @@
-@desc css hamburger
-@tags hamburger
-
+/**
+ * Afficher le caractère hamburger ☰ en css
+ */
 a.hamburger:before {
     /* output the hamburger character ☰ */
     content: '\2261\00a0';
