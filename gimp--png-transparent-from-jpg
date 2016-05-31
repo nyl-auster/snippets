@@ -1,0 +1,7 @@
+GIMP's Color to Alpha tool is very handy if you know how to use it, and this task seems particularly well suited for it:
+
+Open the image in GIMP, and change it to RGB color mode if necessary.
+Select Layer → Transparency → Color to Alpha...
+Select black (#000000) as the color to make transparent.
+Click "OK".
+Save the resulting image in PNG format:
