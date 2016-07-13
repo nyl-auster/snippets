@@ -1,4 +1,26 @@
 <?php
+
+/**
+* Retourne le nid d'un type de contenu "gammes_liste" faisant
+* référence à notre contenu de type "gamme".
+*
+* @param $nid_gamme (int)
+* @return int | FALSE
+*/
+function get_referencing_gammes_liste($nid_gamme) {
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'gammes_liste')
+    ->propertyCondition('status', 1)
+    // on onleve "field_data" du nom de la table" et on enleve "field_gammes" du nom de la colonne.
+    ->fieldCondition('field_gammes', 'target_id', $nid_gamme)
+    ->execute();
+  if (!empty($entities['node'])) {
+    return reset(array_keys($entities['node']));
+  }
+  return FALSE;
+}
+
 /**
  * Obtenir la dernière actualité épinglée
  */
