@@ -6,19 +6,19 @@
 /**
  * Implements hook_init()
  */
-function mazedia_cookie_consent_init() {
+function lightcookieconsent_init() {
 
   if (path_is_admin(current_path())) return;
 
   global $language;
-  drupal_add_js(drupal_get_path('module', 'mazedia_cookie_consent') . '/cookieconsent.min.js');
+  drupal_add_js(drupal_get_path('module', 'lightcookieconsent') . '/cookieconsent.min.js');
 
   $lang =  $language->language;
-  $default = mazedia_cookie_consent_get_default_config($lang);
+  $default = lightcookieconsent_get_default_config($lang);
   $options = json_encode(array(
-      'message' => variable_get("mazedia_cookie_consent_message_main_$lang", $default['message_main']),
-      'learnMore'=> variable_get("mazedia_cookie_consent_message_more_info_$lang", $default['message_more_info']),
-      'dismiss'=> variable_get("mazedia_cookie_consent_message_dismiss_$lang", $default['message_dismiss']),
+      'message' => variable_get("lightcookieconsent_message_main_$lang", $default['message_main']),
+      'learnMore'=> variable_get("lightcookieconsent_message_more_info_$lang", $default['message_more_info']),
+      'dismiss'=> variable_get("lightcookieconsent_message_dismiss_$lang", $default['message_dismiss']),
       'link' => null,
       'theme' => 'light-top',
     ));
@@ -31,17 +31,17 @@ function mazedia_cookie_consent_init() {
 /**
  * Implements hook_menu()
  */
-function mazedia_cookie_consent_menu() {
+function lightcookieconsent_menu() {
   return array(
     'admin/config/mazedia-cookie-consent' => array(
       'title' => t('Cookie consentement'),
       'description' => t('Configuration pour le consentement des cookie'),
       'page callback' => 'drupal_get_form',
-      'page arguments' => array('mazedia_cookie_consent_form'),
+      'page arguments' => array('lightcookieconsent_form'),
       'access arguments' => array('palais de tokyo config'),
       'type' => MENU_NORMAL_ITEM,
-      'file' => 'mazedia_cookie_consent.admin.forms.inc',
-      'file path' => drupal_get_path('module', 'mazedia_cookie_consent'),
+      'file' => 'lightcookieconsent.admin.forms.inc',
+      'file path' => drupal_get_path('module', 'lightcookieconsent'),
     )
   );
 }
@@ -51,18 +51,18 @@ function mazedia_cookie_consent_menu() {
  * @param $language
  * @return mixed
  */
-function mazedia_cookie_consent_get_default_config($language) {
+function lightcookieconsent_get_default_config($language) {
   $config = array(
     'en' => array(
       'message_main' => 'This website uses cookies to ensure you get the best experience on our website',
       'message_more_info' => 'More info',
-      'message_dismiss' => "Got it !",
+      'message_dismiss' => "X",
       'more_info_link' => null,
     ),
     'fr' => array(
       'message_main' => 'Ce site utilise des cookies pour vous assurer la meilleure expérience utilisateur possible',
       'message_more_info' => "Plus d'informations",
-      'message_dismiss' => "Ok !",
+      'message_dismiss' => "X",
       'more_info_link' => null
     )
   );
