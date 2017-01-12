@@ -1,6 +1,6 @@
-@desc Example angular directive
-@tags angularjs, directive
-
+/**
+ *
+ */
 app.directive("productGallery", function() {
   return {
     restrict: "E",
