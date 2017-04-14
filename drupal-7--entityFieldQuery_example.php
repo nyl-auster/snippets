@@ -40,3 +40,25 @@ function actualite_get_single_sticky() {
   }
   return $node;
 }
+
+/**
+ * Récupère la liste des évènements à venir aujourd'hui
+ *  * @return bool|mixed
+ *   */
+function bn_get_today_upcoming_events() {
+  $today = date('Y-m-d');
+  $now = date('Y-m-d H:i:s');
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'event')
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_event_date', 'value', $today, 'STARTS_WITH')
+    ->fieldCondition('field_event_date', 'value', $now, '>')
+    ->execute();
+  if (!empty($entities['node'])) {
+    $nids = array_keys($entities['node']);
+    return $nids;
+  }
+  return array();
+}
+
